@@ -1,0 +1,32 @@
+name: Release
+
+on: [workflow_dispatch]
+
+env:
+  DOTNET_VERSION: 8.0.x
+  PROJECT_PATH: Cloak/Cloak.csproj
+  RELEASE_PATH: Cloak/bin/Release/netstandard2.1/Cloak.dll
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+    - name: Build
+      run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4.6.0
+      with:
+        name: Cloak
+        path: ${{ env.RELEASE_PATH }}
+    - name: Cache
+      uses: actions/cache@v4.2.0
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
