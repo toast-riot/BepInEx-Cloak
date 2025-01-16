@@ -1,5 +1,5 @@
 <h1 align="center">BepInEx Cloak · A plugin hider</h1>
-A preloader patcher for BepInEx which prevents common methods of detecting if a specified plugin is loaded, effectively "cloaking" it.
+A universal BepInEx patcher that prevents common methods of detecting if a specified plugin is loaded, effectively "cloaking" it.
 
 ## How to Use
 1. Download the DLL from releases, then put it in your `BepInEx/patchers` folder.
@@ -14,7 +14,7 @@ A preloader patcher for BepInEx which prevents common methods of detecting if a 
 > This is a preloader patcher, **not a plugin**. It must be placed in the `patchers` folder.
 
 ## Purpose
-Sometimes modded content has a basic anticheat system which prevents certain plugins loading, inadvertently making it quite difficult to debug. These systems are usually easy but tedious to work around. To avoid needing to create a workaround for each individual case, I created this "fix-most" solution.
+Sometimes modded content has a basic anticheat system that prevents certain plugins loading, inadvertently making it quite difficult to debug. These systems are usually easy but tedious to work around. To avoid needing to create a workaround for each individual case, I created this "fix-most" solution.
 
 ## Notes
 - This is intended to be used by developers, for debugging and modding.
